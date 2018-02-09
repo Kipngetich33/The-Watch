@@ -86,7 +86,7 @@ class Business(models.Model):
 
     def update_business(self,business_name,business_email):
         '''
-        Method that updates an exiting neighborhood
+        Method that updates an exiting business
         '''
         self.business_name = business_name
         self.business_email = business_email
@@ -95,11 +95,18 @@ class Business(models.Model):
     @classmethod
     def find_business(cls,business_id):
             '''
-            Method the find_neighborhood method using the neighborhood id 
+            Method the find a business using the business name
             '''
             found_business = cls.object.get(id= business_id)
             return found_business 
 
+    @classmethod
+    def search_business(cls,business_name):
+        '''
+        Method that searches for a business using the business name
+        '''
+        searched_businesses = cls.objects.filter(business_name__icontains = business_name)
+        return searched_businesses
     
 
 

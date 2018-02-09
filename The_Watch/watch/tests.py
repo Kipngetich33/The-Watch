@@ -121,6 +121,14 @@ class BusinessTestClass(TestCase):
         '''
         pass
 
+    def test_search_business(self):
+        '''
+        Tests the search business method
+        '''
+        self.business.save()
+        found_business = Business.search_business('Business_name')
+        self.assertTrue(found_business.business_name == 'Business_name')
+
 
     
 
