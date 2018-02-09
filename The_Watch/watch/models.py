@@ -41,15 +41,7 @@ class Neighborhood(models.Model):
             found_neighborhood = Neighborhood.objects.get(id = id)
             return Neighborhood
 
-    
-
-
-name.
-id.
-neighborhood id foreign key
-email address.
-
-class User_(models.Model):
+class User_Profile(models.Model):
     '''
     A class that defines the User_ model class
     '''
@@ -57,6 +49,12 @@ class User_(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
     neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
+
+    def save_user_profiel(self):
+        self.save()
+
+    def delete_user_profile(self):
+        self.delete()
 
     def __str__(self):
         return self.name

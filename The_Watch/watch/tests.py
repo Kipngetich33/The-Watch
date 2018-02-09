@@ -1,5 +1,5 @@
 from django.test import TestCase
-from . models import Neighborhood,User
+from . models import Neighborhood, User_Profile 
 
 class NeighborTestClass(TestCase):
     '''
@@ -53,7 +53,7 @@ class NeighborTestClass(TestCase):
         '''
         pass
 
-class User_TestClass(TestCase):
+class User_ProfileTestClass(TestCase):
     '''
     A class that test the User_ class model
     '''
@@ -62,7 +62,16 @@ class User_TestClass(TestCase):
         '''
         method that runs at the begginning of each test
         '''
-        self.user_ = User(name = 'Brandford', id=1, neighborhood_id = 1, email_address= 'brandford@rocketmail.com')
+        self.user_profile = User_Profile(name = 'Brandford', id=1, email= 'brandford@rocketmail.com')
+
+    def test_isInstance(self):
+        '''
+        Test if the creted object is an instance of the User_profile model
+        '''
+        self.assertTrue(isinstance(self.user_profile,User_Profile))
+        
+
+
 
 
 
