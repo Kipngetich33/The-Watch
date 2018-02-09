@@ -15,21 +15,56 @@ class Neighborhood(models.Model):
 
     def create_neighborhood(self):
         '''
-        Methods that saves a new neighborhood
+        Method that saves a new neighborhood
         '''
         self.save()
 
     def delete_neighborhood(self):
         '''
-        Methods that deletes an exiting neighborhood
+        Method that deletes an exiting neighborhood
         '''
         self.delete() 
     
-    def update_neighborhood(self):
+    def update_neighborhood(self,neighborhood_name,neighborhood_location,occupants_count):
         '''
-        Methods that updates an exiting neighborhood
+        Method that updates an exiting neighborhood
         '''
-        self.
+        self.neighborhood_name = neighborhood_name
+        self.neighborhood_location = neighborhood_location
+        self.occupants_count += occupants_count
+        self.save()
+
+    def find_neigborhood(self,id):
+            '''
+            Mehthod the find_neighborhood method using the neighborhood id 
+            '''
+            found_neighborhood = Neighborhood.objects.get(id = id)
+            return Neighborhood
+
+    
+
+
+name.
+id.
+neighborhood id foreign key
+email address.
+
+class User_(models.Model):
+    '''
+    A class that defines the User_ model class
+    '''
+    name = models.CharField(max_length =30,null=True) 
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
+    neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
+    neighborhood_location = models.CharField(max_length =30, null =True)
+    occupants_count = models.PositiveIntegerField(default=0)
+    admin_foreign_key = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
+
+    def __str__(self):
+        return self.neighborhood_name
+
+            
+
 
  
 
