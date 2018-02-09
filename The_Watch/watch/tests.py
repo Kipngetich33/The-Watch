@@ -1,5 +1,5 @@
 from django.test import TestCase
-from . models import Neighborhood, User_Profile 
+from . models import Neighborhood, User_Profile, Business
 
 class NeighborTestClass(TestCase):
     '''
@@ -69,6 +69,63 @@ class User_ProfileTestClass(TestCase):
         Test if the creted object is an instance of the User_profile model
         '''
         self.assertTrue(isinstance(self.user_profile,User_Profile))
+
+class BusinessTestClass(TestCase):
+    '''
+    A class that test the User_ class model
+    '''
+
+    def setUp(self):
+        '''
+        method that runs at the begginning of each test
+        '''
+        self.business = Business(business_name = 'Business_name', business_email= 'business@rocketmail.com')
+
+    def test_isInstance(self):
+        '''
+        Test if the object is an instance of the Business model
+        '''
+        self.assertTrue(isinstance(self.business,Business))
+
+    def test_create_business(self):
+        '''
+        Test the create business  method 
+        '''
+        self.business.create_business()
+        found_businesses = Business.objects.all()
+        self.assertTrue(len(found_businesses)==1)
+
+    def test_delete_business(self):
+        '''
+        Test the delete business method
+        '''
+        self.business.save()
+        business2 = Business(business_name = 'Business_name2', business_email= 'business2@rocketmail.com')
+        business2.save()
+        self.business.delete_business()
+        found_businesses = Business.objects.all()
+        self.assertTrue(len(found_businesses)==1)
+
+    def test_update_business(self):
+        '''
+        Tests the update_business method
+        '''
+        self.business.save()
+        self.business.update_business('Business_name2','business2@rocketmail.com')
+        self.business.save()
+        self.assertTrue(self.business.business_name == 'Business_name2',self.business.business_email =='business2@rocketmail.com')
+
+    def test_find_business(self):
+        '''
+        Tests the find business method using an id
+        '''
+        pass
+
+
+    
+
+
+
         
 
 

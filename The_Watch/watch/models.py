@@ -70,7 +70,39 @@ class Business(models.Model):
     business_email = models.EmailField(null=True)
 
     def __str__(self):
-        return self.business_name     
+        return self.business_name  
+
+    def create_business(self):
+        '''
+        Method that saves a new business object to the database
+        '''
+        self.save()
+
+    def delete_business(self):
+        '''
+        Method that delete the an exiting business object to the database
+        '''
+        self.delete()
+
+    def update_business(self,business_name,business_email):
+        '''
+        Method that updates an exiting neighborhood
+        '''
+        self.business_name = business_name
+        self.business_email = business_email
+        self.save() 
+
+    @classmethod
+    def find_business(cls,business_id):
+            '''
+            Method the find_neighborhood method using the neighborhood id 
+            '''
+            found_business = cls.object.get(id= business_id)
+            return found_business 
+
+    
+
+
       
 
 
