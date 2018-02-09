@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8"> {% if title %}
-    <title>Instagram - {{title}}</title>
+    <title>The Watch - {{title}}</title>
     {% else %}
     <title> Instagram </title>
     {% endif %} {% block styles %} {% bootstrap_css %}
@@ -14,7 +14,8 @@
 </head>
 
 <body style="background-color:#f2f2f2;">
-{% block content %} {%endblock%} 
+{% include 'navbar.html' %}
+{% block content %} {% endblock %} 
 </body>
 
 </html>
