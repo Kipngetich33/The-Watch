@@ -56,14 +56,24 @@ class User_(models.Model):
     name = models.CharField(max_length =30,null=True) 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
     neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
-    neighborhood_location = models.CharField(max_length =30, null =True)
-    occupants_count = models.PositiveIntegerField(default=0)
-    admin_foreign_key = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
+    email = models.EmailField(null=True)
 
     def __str__(self):
-        return self.neighborhood_name
+        return self.name
 
-            
+
+class Business(models.Model):
+    '''
+    Class that defines the structure of a business object
+    '''
+    business_name = models.CharField(max_length =30,null=True) 
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
+    neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
+    business_email = models.EmailField(null=True)
+
+    def __str__(self):
+        return self.business_name     
+      
 
 
  
