@@ -66,3 +66,10 @@ def business(request):
     else:
         form = BusinessForm()
     return render(request,'business/business.html',{"form":form})
+
+def view_business(request):
+    current_user = request.user
+    current_profile = User_Profile.find_profile_by_id(current_user)
+    current_neighborhood = Neighborhood.find_neighborhood(current_profile.neighborhood_id.id)
+    found_businesses = Business.all_business()
+    return render(request,'business/view_business.html',{"current_user":current_user,"found_businesses":found_businesses, "current_profile": current_profile,"current_neighborhood":current_neighborhood})

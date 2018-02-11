@@ -6,6 +6,8 @@ urlpatterns=[
     url(r'^profile/create',views.create_profile,name = 'create_profileUrl'),
     url(r'^post/create',views.post,name = 'postUrl'),
     url(r'^business/create',views.business,name = 'businessUrl'),
+    url(r'^business/view',views.view_business,name = 'viuewBusinessUrl'),
+
 
 
 ]

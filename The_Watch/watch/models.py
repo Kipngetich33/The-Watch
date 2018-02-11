@@ -107,8 +107,18 @@ class Business(models.Model):
             '''
             Method the find a business using the business name
             '''
-            found_business = cls.object.get(id= business_id)
-            return found_business 
+            found_business = cls.objects.get(id= business_id)
+            return found_business
+
+    @classmethod
+    def all_business(cls):
+        '''
+        Methods that returns all the businesses in a neighborhood
+        '''
+        found_business = cls.objects.all()
+        return found_business
+
+
 
     @classmethod
     def search_business(cls,business_name):
