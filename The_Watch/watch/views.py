@@ -19,7 +19,7 @@ def create_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES)
         if form.is_valid():
-            new_profile = form.save(save=False)
+            new_profile = form.save(commit=False)
             new_profile.user_id =  current_user
             new_profile.save()
             return redirect( landing ) 
@@ -30,13 +30,16 @@ def create_profile(request):
 def post(request):
     form = ProfileForm()
     current_user = request.user
+    current_profile = User_Profile.find_profile_by_id(current_user) 
+    current_neighborhood = Neighborhood.find_neighborhood(current_profile.neighborhood_id.id)
 
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            new_profile = form.save(commit = False)
-            new_profile.user_id =  current_user
-            new_profile.save()
+            new_post = form.save(commit = False)
+            new_post.user_id =  current_user
+            new_post.neighborhood_id = current_neighborhood
+            new_post.save()
             return redirect( landing ) 
     else:
         form = PostForm()
