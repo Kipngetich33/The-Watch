@@ -51,7 +51,7 @@ class User_Profile(models.Model):
     neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
 
-    def save_user_profiel(self):
+    def save_user_profile(self):
         self.save()
 
     def delete_user_profile(self):
