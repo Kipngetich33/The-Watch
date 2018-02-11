@@ -34,12 +34,13 @@ class Neighborhood(models.Model):
         self.occupants_count += occupants_count
         self.save()
 
-    def find_neigborhood(self,id):
-            '''
-            Mehthod the find_neighborhood method using the neighborhood id 
-            '''
-            found_neighborhood = Neighborhood.objects.get(id = id)
-            return Neighborhood
+    @classmethod
+    def find_neighborhood(cls,neighborhood_id):
+        '''
+        Mehthod the find_neighborhood method using the neighborhood id 
+        '''
+        found_neighborhood = cls.objects.get(id = neighborhood_id)
+        return found_neighborhood
 
 class User_Profile(models.Model):
     '''
@@ -58,6 +59,14 @@ class User_Profile(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def find_profile_by_id(cls,user_id):
+        '''
+        Method that finds the current user profile using current user's id
+        '''
+        profile = User_Profile.objects.get(user_id = user_id)
+        return profile
 
 
 class Business(models.Model):
