@@ -21,17 +21,14 @@ def landing(request):
    
 
 def create_profile(request):
-    form = ProfileForm()
-    current_user = request.user
-
+    current_user = request.user 
     if request.method == 'POST':
-        form = ProfileForm(request.POST,request.FILES)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            new_profile = form.save()
-            return redirect( landing ) 
+            return redirect( landing )
     else:
         form = ProfileForm()
-    return render(request,'profile/create_profile.html',{"form":form})
+    return redirect(request,'profile/create_profile.html',{"form":form})
 
 def post(request):
     current_user = request.user
