@@ -16,6 +16,12 @@ This is a web app that allows users to sign up as part of a neighborhood  stay u
 * A user can move out of a neighborhood
 * A user can only view information concerning their neighborhood
 
+| Behavior        | Input           | Outcome  |
+| ------------- |:-------------:| -----:|
+|Display of in form | N/A | Displays sign in form when a user visits the site | 
+| Logout current user | click the logout link in the drop down in the navbar | Displays the login form
+
+
 ## Set Up and Installation
 
 #### Prerequisites
