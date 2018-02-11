@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
     class that creates a post object create form
     '''
     class Meta:
-        model = Image
+        model = Post
         fields = ['title','post']
 
 class ProfileForm(forms.ModelForm): 

@@ -129,6 +129,11 @@ class Post(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
 
+    @classmethod
+    def get_all_post(cls):
+        posts = cls.objects.all()
+        return posts
+
     
 
 
