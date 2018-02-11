@@ -67,3 +67,14 @@ def post(request):
     else:
         form = PostForm()
     return render(request,'post.html',{"form":form})
+
+def move_out(request): 
+    neighborhoods = Neighborhood.all_neighborhoods()
+    return render(request,'profile/move_out.html',{"neighborhoods":neighborhoods})
+
+def moving(request,neighborhood):
+    current_user = request.user
+    current_profile = User_Profile.find_profile_by_id(current_user)
+    current_profile.neighborhood_id = neighborhood
+    current_profile.save()
+    return redirect(landing)

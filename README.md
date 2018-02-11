@@ -19,7 +19,10 @@ This is a web app that allows users to sign up as part of a neighborhood  stay u
 | Behavior        | Input           | Outcome  |
 | ------------- |:-------------:| -----:|
 |Display of in form | N/A | Displays sign in form when a user visits the site | 
-| Logout current user | click the logout link in the drop down in the navbar | Displays the login form
+| Logout current user | click the logout link in the drop down in the navbar | Displays the login form |
+| Display of current user | N/A | Displays name of current user in a Navbar when user signs in |
+| Display Businesses in Neighborhood | Click Business link in navbar | Displays all businesses in new template |
+| Create New Business | Click the plus sign in the businesses page | Redirects to pages where users can create a business |
 
 
 ## Set Up and Installation

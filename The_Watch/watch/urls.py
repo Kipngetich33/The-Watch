@@ -7,4 +7,6 @@ urlpatterns=[
     url(r'^post/create',views.post,name = 'postUrl'),
     url(r'^business/create',views.business,name = 'businessUrl'),
     url(r'^business/view',views.view_business,name = 'viewBusinessUrl'),
+    url(r'^move/out',views.move_out,name = 'move_outUrl'),
+    url(r'^moving/out/(\d+)',views.moving,name = 'movingUrl'),
 ]

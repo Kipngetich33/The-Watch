@@ -39,7 +39,11 @@
 
     {% endif %}
   </div>
-  <h5 style="color:white;">{{current_user.username}}</h5> 
+  <h5 style="color:white;">{{current_user.username}} &nbsp;&nbsp;<a href="{% url 'viewBusinessUrl' %}">
+    Businesses
+  </a></h5> 
+  
+  
 </nav>
 </body>
 </html>

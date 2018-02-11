@@ -37,10 +37,18 @@ class Neighborhood(models.Model):
     @classmethod
     def find_neighborhood(cls,neighborhood_id):
         '''
-        Mehthod the find_neighborhood method using the neighborhood id 
+        Method the find_neighborhood method using the neighborhood id 
         '''
         found_neighborhood = cls.objects.get(id = neighborhood_id)
         return found_neighborhood
+
+    @classmethod
+    def all_neighborhoods(cls):
+        '''
+        Method that returns all the neighborhoods
+        '''
+        all_neighborhoods = cls.objects.all()
+        return all_neighborhoods
 
 class User_Profile(models.Model):
     '''
@@ -65,9 +73,17 @@ class User_Profile(models.Model):
         '''
         Method that finds the current user profile using current user's id
         '''
-        profile = User_Profile.objects.get(user_id = user_id)
+        profile = cls.objects.get(user_id = user_id)
         return profile
 
+    @classmethod
+    def move_out(cls,user_id,neighborhood_id):
+        '''
+        Method that allows users to move from one neighborhood to another
+        '''
+        updated_profile = cls.objects.get(user_id = user_id)
+        updated_profile.neighborhood_id = neighborhood_id
+        updated_profile.save_user_profile()
 
 class Business(models.Model):
     '''
@@ -139,11 +155,18 @@ class Post(models.Model):
     post = models.TextField(null=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
+    post_date = models.DateTimeField(auto_now_add=True, null= True)
 
     @classmethod
     def get_all_post(cls):
         posts = cls.objects.all()
         return posts
+
+    class Meta:
+        '''
+        Order posts with most recent at the top
+        '''
+        ordering = ['-post_date']
 
     
 

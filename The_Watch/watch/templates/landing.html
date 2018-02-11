@@ -7,7 +7,10 @@
     {% for post in posts %}
     {% if post.neighborhood_id == current_neighborhood %}
     <div class="well">
-            {{post.title}}
+            <h4>{{post.title}}</h4>
+            <p>{{post.post}}</p>
+            <h5>{{post.post_date}}</h5>
+            
     </div> 
     {% endif %}
     {% endfor %}
