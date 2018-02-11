@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
 from . models import User_Profile ,Business ,Neighborhood, Post
-from . forms import PostForm, ProfileForm
+from . forms import PostForm, ProfileForm, BusinessForm
 
 @login_required(login_url='/accounts/login/')
 def landing(request):
@@ -50,3 +50,19 @@ def post(request):
         form = PostForm()
     return render(request,'post.html',{"form":form})
 
+def business(request):
+    current_user = request.user
+    current_profile = User_Profile.find_profile_by_id(current_user)
+    current_neighborhood = Neighborhood.find_neighborhood(current_profile.neighborhood_id.id)
+
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_business = form.save(commit = False)
+            new_business.user_id =  current_user
+            new_business.neighborhood_id = current_neighborhood
+            new_business.save()
+            return redirect( landing ) 
+    else:
+        form = BusinessForm()
+    return render(request,'business/business.html',{"form":form})

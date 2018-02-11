@@ -77,6 +77,7 @@ class Business(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
     neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     business_email = models.EmailField(null=True)
+    business_description = models.TextField(null= True )
 
     def __str__(self):
         return self.business_name  
