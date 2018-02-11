@@ -11,14 +11,6 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title','post']
 
-class ProfileForm(forms.ModelForm): 
-    '''
-    class that creates a new profile creation form
-    '''
-    class Meta:
-        model = User_Profile
-        fields = ['name','neighborhood_id','email']
-
 class BusinessForm(forms.ModelForm): 
     '''
     class that creates a new business creation form
@@ -26,3 +18,11 @@ class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         fields = ['business_name','business_email','business_description']
+
+class ProfileForm(forms.ModelForm): 
+    '''
+    class that creates a new business creation form
+    '''
+    class Meta:
+        model = User_Profile
+        fields = ['name','neighborhood_id','email']
