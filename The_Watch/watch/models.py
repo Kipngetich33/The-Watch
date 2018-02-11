@@ -116,6 +116,23 @@ class Business(models.Model):
         '''
         searched_businesses = cls.objects.filter(business_name__icontains = business_name)
         return searched_businesses
+
+class Post(models.Model):
+    '''
+    class that defines the structure of a post object
+    '''
+    def __str__(self):
+        return self.title
+
+    title = models.CharField(max_length =30,null=True) 
+    post = models.TextField(null=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
+    neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
+
+    
+
+
+    
     
 
 

@@ -8,5 +8,5 @@ def landing(request):
     current_user = request.user
     current_profile = User_Profile.find_profile_by_id(current_user) 
     current_neighborhood = Neighborhood.find_neighborhood(current_profile.neighborhood_id.id)
-    return render(request,'landing.html',{"current_neighborhood":current_neighborhood})
+    return render(request,'landing.html',{"current_neighborhood":current_neighborhood,"current_user":current_user})
 
